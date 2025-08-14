@@ -4,9 +4,11 @@ import mobile from "../assets/mobile.png";
 import watch from "../assets/watch.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../CartSlice';
+import { useNavigate } from 'react-router-dom';
 const Product = () => {
     const dispatch=useDispatch();
-    const cartitem=useSelector((state)=>state.cart.cartitems)
+    const cartitem=useSelector((state)=>state.cart.cartitems);
+    const navigate=useNavigate();
     const productList=[
         {
             id:1,name:"laptop",price:33000,image:laptop
@@ -21,6 +23,7 @@ const Product = () => {
   return (
     <div>
         <h1>Cart - {cartitem.length}</h1>
+        <button onClick={()=>navigate("/showcart")}></button>
         <h1>Products</h1>
         <div style={{display:"flex",justifyContent:"space-around"}}>
             {productList.map((item,index)=>(

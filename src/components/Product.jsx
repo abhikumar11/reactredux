@@ -2,7 +2,11 @@ import React from 'react'
 import laptop from "../assets/laptop.png";
 import mobile from "../assets/mobile.png";
 import watch from "../assets/watch.png";
+import { useDispatch } from 'react-redux';
+import { addItem } from '../CartSlice';
 const Product = () => {
+    const dispatch=useDispatch();
+
     const productList=[
         {
             id:1,name:"laptop",price:33000,image:laptop
@@ -23,7 +27,7 @@ const Product = () => {
                     <img src={item.image} height={"200px"}/>
                     <h2>{item.name}</h2>
                     <p>&#8377;{item.price}</p>
-                    <button>Add to Cart</button><br/>
+                    <button onClick={()=>dispatch(addItem(item))}>Add to Cart</button><br/>
                 </div>
             ))}
         </div>

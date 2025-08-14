@@ -23,7 +23,7 @@ const Product = () => {
   return (
     <div>
         <h1>Cart - {cartitem.length}</h1>
-        <button onClick={()=>navigate("/showcart")}></button>
+        <button onClick={()=>navigate("/showcart")}>Go to cart</button>
         <h1>Products</h1>
         <div style={{display:"flex",justifyContent:"space-around"}}>
             {productList.map((item,index)=>(

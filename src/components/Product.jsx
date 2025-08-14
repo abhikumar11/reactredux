@@ -2,11 +2,11 @@ import React from 'react'
 import laptop from "../assets/laptop.png";
 import mobile from "../assets/mobile.png";
 import watch from "../assets/watch.png";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../CartSlice';
 const Product = () => {
     const dispatch=useDispatch();
-
+    const cartitem=useSelector((state)=>state.cart.cartitems)
     const productList=[
         {
             id:1,name:"laptop",price:33000,image:laptop
@@ -20,10 +20,11 @@ const Product = () => {
     ]
   return (
     <div>
+        <h1>Cart - {cartitem.length}</h1>
         <h1>Products</h1>
         <div style={{display:"flex",justifyContent:"space-around"}}>
-            {productList.map((item)=>(
-                <div style={{border:"1px solid black",padding:"16px"}}>
+            {productList.map((item,index)=>(
+                <div key={index} style={{border:"1px solid black",padding:"16px"}}>
                     <img src={item.image} height={"200px"}/>
                     <h2>{item.name}</h2>
                     <p>&#8377;{item.price}</p>
